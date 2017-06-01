@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<!--     <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task Manager</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+
+  <body ng-app="myApp" ng-controller="myController">
+
+    <div class="container">
+      <hr>
+        <button type="button" class="btn btn-success btn-lg pull-right" data-toggle="modal" data-target="#myModal">Add new</button>
+        <h2 class="task">Task List</h2>
+        <span class="clearfix"></span>
+      <hr>
+    </div>
+    
+    <div class="container">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Task</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Share</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="task in tasks">
+            <td>{{$index+1}}.</td>
+            <td>{{task.username}}</td>
+            <td>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalEdit" ng-click="selectTask(task)">Edit
+              </button>  
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalDelete" ng-click="selectTask(task)">Delete</button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-primary">Share</button> 
+            </td>
+          </tr>
+        </tbody>
+    </table>
+      <div class="alert alert-info" ng-if="message">
+        <a href="#" class="close" ng-click="clearMessage()">&times;</a>
+          {{message}}
+      </div>
+    </div>
+
+    <!--Add task-->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Please type the task</h4>
+          </div>
+          <div class="modal-body">  
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="text" req>Add task</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter text" ng-model="newTask.username" required>
+                  </div>
+                </div>
+                <div class="form-group"> 
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default" ng-click="saveTask()" data-dismiss="modal" >Add</button>
+                  </div>
+                </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Edit task -->
+    <div class="modal fade" id="myModalEdit" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Edit your task</h4>
+          </div>
+          <div class="modal-body">  
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="text">Edit task</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Enter text" ng-model="clickedTask.username">
+                    </div>
+                  </div>
+                  <div class="form-group"> 
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="updateTask">Edit</button>
+                    </div>
+                  </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Delete task  -->
+    <div class="modal fade" id="myModalDelete" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Are You sure?</h4>
+            <div class="modal-bodyz">
+              <strong style="color: red">
+                  You going to gelete the task {{clickedTask.username}}.
+              </strong>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="deleteTask()">Yes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

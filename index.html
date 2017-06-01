@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login window</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/change_win.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src='js/controller.js'></script>
+
+</head>
+
+<body>
+<div class="container" >
+  <div class="row">
+	<div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-login">
+		<div class="panel-heading">
+	       <div class="row">
+			  <div class="col-xs-6">
+					<a href="#" class="active" id="login-form-link">Login</a>
+			  </div>
+			  <div class="col-xs-6">
+					<a href="#" id="register-form-link">Register</a>
+		   	  </div>
+		    </div>
+			<hr>
+		</div>
+		<div class="panel-body">
+		  <div class="row">
+			<div class="col-lg-12">
+				
+			<div class="contain" ng-controller="loginController">
+			  <form id="login-form" action="/task.html"  method="get" >
+				<div class="form-group">
+				   <input type="text" tabindex="1" class="form-control" placeholder="Username" required ng-model="username">
+				</div>
+				<div class="form-group">
+				   <input type="password" tabindex="2" class="form-control" placeholder="Password" required ng-model="password">
+				</div>
+				  <div class="form-group">
+				     <div class="row">
+					    <div class="col-sm-6 col-sm-offset-3">
+					  <!-- <button type="button" tabindex="4" class="form-control btn btn-login" value="Log In" ng-click="submit()"> Log In</button> -->
+							<input type="submit" tabindex="4" class="form-control btn btn-login" value="Log In" ng-click="submit()">
+						</div>
+			  		 </div>
+				  </div>
+			  </form>
+			  </div>
+
+
+
+			  <!-- рядок для надсилання -->
+			  <form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
+
+				<div class="form-group">
+			    	<input type="text" tabindex="1" class="form-control" placeholder="Username" required>
+				</div>
+				<!-- <div class="form-group">
+					<input type="email" tabindex="1" class="form-control" placeholder="Email Address" required>
+				</div> -->
+				<div class="form-group">
+					<input type="password" tabindex="2" class="form-control" placeholder="Password" required>
+				</div>
+				<div class="form-group">
+					<input type="password" tabindex="2" class="form-control" placeholder="Confirm Password" required>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+							<input type="submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+						</div>
+					</div>
+				</div>
+			  </form>
+	  	    </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+	<!-- <a href="task.html"><button>go</button></a>	 -->
+
+</body>
+</html>
